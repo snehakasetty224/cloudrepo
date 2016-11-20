@@ -90,17 +90,38 @@ public class Controller {
 		return list;
 	}
 	
+	@Path("routes")
+	@GET
+	@Produces("application/json")
+	public ArrayList<Routes> routes(@QueryParam("user") String user, @QueryParam("role") String role) throws Exception {
+		ArrayList<Routes> list = null;
+		if(role.equals("admin")){
+			list = Mysqlquery.getRoutes("select l.src_latitude, l.src_longitude,l.dest_latitude, l.dest_longitude from LocationSensors l, Sensors s where l.sensor_id=s.id;" );
+		}else {
+			list = Mysqlquery.getRoutes("select l.src_latitude, l.src_longitude,l.dest_latitude, l.dest_longitude from LocationSensors l, Sensors s where l.sensor_id=s.id and  s.provider_id='"+user+"';" );
+		} 
+		return list;
+	}
+	
 	@Path("billamount")
 	@GET
 	@Produces("application/json")
 	public ArrayList<Bill> login(@QueryParam("user") String user) throws Exception {
-		ArrayList<Bill> list = null;
-			list = Mysqlquery.getBill("SELECT sum(amount) as sum,MONTHNAME(STR_TO_DATE(month(startDate),'%m')) as m, month(startDate) as monthnumber FROM CMPE281_2.Billings where userId='"+user+"' group by m,monthnumber order by monthnumber;" );
+	        ArrayList<Bill> list = null;
+			list = Mysqlquery.getBill("SELECT sum(amount) as sum,MONTHNAME(STR_TO_DATE(month(startDate),'%m')) as m, month(startDate) as monthnumber FROM Billings where userId='"+user+"' group by m,monthnumber order by monthnumber;" );
 		
 		return list;
 	}
-	
-    
+
+	@Path("adminbill")
+	@GET
+	@Produces("application/json")
+	public ArrayList<AdminBill> login() throws Exception {
+		ArrayList<AdminBill> list = null;
+			list = Mysqlquery.getAdminBill("SELECT userId,amount,isPaid,date(startDate) as d FROM Billings;" );
+		
+		return list;
+	}
 	
 	
 }

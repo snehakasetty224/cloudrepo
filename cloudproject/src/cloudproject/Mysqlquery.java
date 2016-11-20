@@ -108,5 +108,63 @@ public class Mysqlquery {
 		return list;
 	}
 
+	public static ArrayList<Routes> getRoutes(String query) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("MySQL JDBC Driver Registered!");
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		ArrayList<Routes> list = new ArrayList<Routes>();
+		if (connection != null) {
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next())
+			{
+				Routes routes = new Routes();
+				routes.setSrc_latitude(rs.getDouble("src_latitude"));
+				routes.setSrc_longitude(rs.getDouble("src_longitude"));
+				routes.setDest_latitude(rs.getDouble("dest_latitude"));
+				routes.setDest_longitude(rs.getDouble("dest_longitude"));
+				list.add(routes);
+			}
+			st.close();
+			
+		} else {
+			System.out.println("Failed to make connection!");
+		}
+		connection.close();
+		return list;
+	}
+	
+	public static ArrayList<AdminBill> getAdminBill(String query) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("MySQL JDBC Driver Registered!");
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		ArrayList<AdminBill> list = new ArrayList<AdminBill>();
+		if (connection != null) {
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next())
+			{
+				AdminBill adminamount=new AdminBill();
+				adminamount.setAmount(rs.getDouble("amount"));
+				if (rs.getString("isPaid").equals("1")){
+				adminamount.setIspaid("yes");
+				}
+				else{
+				adminamount.setIspaid("no");	
+				}
+				adminamount.setUserid(rs.getString("userId"));
+				adminamount.setDate(rs.getString("d"));
+				list.add(adminamount);
+			}
+			st.close();
+			
+		} else {
+			System.out.println("Failed to make connection!");
+		}
+		connection.close();
+		return list;
+	}
 	
 }
