@@ -15,7 +15,7 @@ public class Mysqlquery {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("MySQL JDBC Driver Registered!");
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_SNEHA","cmpe281", "testing123");
 		int count=0;
 		if (connection != null) {
 			Statement st = connection.createStatement();
@@ -29,6 +29,7 @@ public class Mysqlquery {
 		} else {
 			System.out.println("Failed to make connection!");
 		}
+		connection.close();
 		return count;
 	}
 	
@@ -37,7 +38,7 @@ public class Mysqlquery {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("MySQL JDBC Driver Registered!");
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_SNEHA","cmpe281", "testing123");
 		ArrayList<String> list = new ArrayList<String>();
 		if (connection != null) {
 			Statement st = connection.createStatement();
@@ -51,6 +52,7 @@ public class Mysqlquery {
 		} else {
 			System.out.println("Failed to make connection!");
 		}
+		connection.close();
 		return list;
 	}
 	
@@ -59,7 +61,7 @@ public class Mysqlquery {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("MySQL JDBC Driver Registered!");
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_SNEHA","cmpe281", "testing123");
 		ArrayList<Map> list = new ArrayList<Map>();
 		if (connection != null) {
 			Statement st = connection.createStatement();
@@ -86,7 +88,7 @@ public class Mysqlquery {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("MySQL JDBC Driver Registered!");
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_SNEHA","cmpe281", "testing123");
 		ArrayList<Bill> list = new ArrayList<Bill>();
 		if (connection != null) {
 			Statement st = connection.createStatement();
@@ -112,7 +114,7 @@ public class Mysqlquery {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("MySQL JDBC Driver Registered!");
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_SNEHA","cmpe281", "testing123");
 		ArrayList<Routes> list = new ArrayList<Routes>();
 		if (connection != null) {
 			Statement st = connection.createStatement();
@@ -139,7 +141,7 @@ public class Mysqlquery {
 		Class.forName("com.mysql.jdbc.Driver");
 		System.out.println("MySQL JDBC Driver Registered!");
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_2","cmpe281", "testing123");
+		connection = DriverManager.getConnection("jdbc:mysql://cmpe281.cznys0ru7jj1.us-west-2.rds.amazonaws.com:3306/CMPE281_SNEHA","cmpe281", "testing123");
 		ArrayList<AdminBill> list = new ArrayList<AdminBill>();
 		if (connection != null) {
 			Statement st = connection.createStatement();
